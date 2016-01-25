@@ -49,6 +49,7 @@ if ($data) {
     <meta charset="utf-8">
     <title>Бложег</title>
 </head>
+<script type="text/javascript" src="js/passvalidator.js"></script>
 <body>
 <form action="" method="post">
     <h2>Регистрация/редактирование юзера</h2>
@@ -57,14 +58,14 @@ if ($data) {
             <?= e($errors, 'title') ?>
         </div>
         <label for="user_name">Имя пользователя</label>
-        <input id="user_name" name="user[name]" type="text" value="<?= e($user, 'name') ?>">
+        <input id="user_name" name="user[name]" type="text" value="<?= e($user, 'name') ?>" required>
     </div>
     <div>
         <div class="error">
             <?= e($errors, 'password') ?>
         </div>
         <label for="user_password">Пароль</label>
-        <input id="user_password" name="user[password]" type="password" value="<?= e($user, 'password') ?>">
+        <input id="user_password" name="user[password]" type="password" value="<?= e($user, 'password') ?>" required>
     </div>
 
 <!--    @todo: написать валидацию пароля на js/jQuery-->
@@ -72,8 +73,9 @@ if ($data) {
         <div class="error">
             <?= e($errors, 'password') ?>
         </div>
-        <label for="user_password">Подтвержите пароль</label>
-        <input id="user_password" name="user[password]" type="password" value="<?= e($user, 'password') ?>">
+        <label for="user_password2">Подтвержите пароль</label>
+        <input id="user_password2" type="password" required>
+<!--        <input id="user_password2" name="user[password]" type="password" value="--><?//= e($user, 'password') ?><!--" required>-->
     </div>
 
     <?php if (isset($user['id'])) :?>
@@ -82,7 +84,7 @@ if ($data) {
         </div>
     <?php endif; ?>
     <div>
-        <input type="submit">
+        <input type="submit" class="validate">
     </div>
 </form>
 </body>

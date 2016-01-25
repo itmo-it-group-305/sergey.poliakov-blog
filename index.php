@@ -43,13 +43,13 @@ array parse_url( string url [. int component] )
 require_once __DIR__ . '/libs/storage.php';
 require_once __DIR__ . '/app/models/post.php';
 
-var_dump (
-    storageSaveItem('post', [
-        'title' => 'Post #1',
-        'content' => 'First post',
-        ]
-    )
-);
+//var_dump (
+//    storageSaveItem('post', [
+//        'title' => 'Post #1',
+//        'content' => 'First post',
+//        ]
+//    )
+//);
 
 $posts = getAllPosts();
 
