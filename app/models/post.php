@@ -35,7 +35,7 @@ function getPostById ($id) {
 
 //Добавление и редактирование поста
 
-function savePost ($data, &$errors = null)
+function savePost (array $data, array &$errors = null)
 
 {
     $id = isset($data['id']) ? $data['id'] : null;

@@ -6,8 +6,7 @@
  * Time: 18:54
  */
 
-require_once __DIR__ . '/libs/storage.php';
-require_once __DIR__ . '/app/models/post.php';
+require_once __DIR__ . '/app/init.php';
 
 $post = getPostById(isset ($_GET['id']) ? $_GET['id'] : '');
 
@@ -19,19 +18,8 @@ if (!$post) {
 
 var_dump($post);
 
+require_once __DIR__ . '/app/views/show.php';
+
 ?>
 
 
-<!doctype html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title><?= $post['title'] ?></title>
-</head>
-<body>
-    <h1><?= $post['title'] ?></h1>
-    <p>Создано <?= $post['created'] ?></p>
-    <p>Обновлено <?= $post['updated'] ?></p>
-    <?= $post['content'] ?>
-</body>
-</html>

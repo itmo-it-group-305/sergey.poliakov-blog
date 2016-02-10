@@ -14,6 +14,11 @@
 
 const ENTITY_USER = 'user';
 
+function getUserBy($attribute, $value)
+{
+    return storageGetItemBy(ENTITY_USER, $attribute, $value);
+}
+
 
 function getAllUsers () {
     return storageGetAll(ENTITY_USER);

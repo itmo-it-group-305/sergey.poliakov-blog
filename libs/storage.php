@@ -46,6 +46,12 @@ function storageGetALL ($entitiy)
     return $items;
 }
 
+//@todo: Сделать поиск по имени пользователя storageGetItemBy('user', 'username')
+function storageGetItemBy($entity, $attribute, $value)
+{
+
+}
+
 function storageGetItemByID($entitiy, $id)
 {
     $filename = createFilenameItem($entitiy, $id);
@@ -58,7 +64,7 @@ function storageGetItemByID($entitiy, $id)
     );
 }
 
-function storageSaveItem($entitiy, &$item)
+function storageSaveItem($entitiy, array &$item)
 {
     $id = isset($item['id']) ? $item['id'] : 0;
     $storedItem = storageGetItemByID($entitiy, (int) $id) ?: [];

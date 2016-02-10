@@ -1,0 +1,16 @@
+{
+    "name": "sergeypoliakov/composer",
+    "description": "Micro framework for study",
+    "authors": [
+        {
+            "name": "Sergey Poliakov",
+            "email": "ps.force@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "\\Polyakusha\\TikEngine\\": "./src"
+        }
+    },
+    "require": {}
+}
