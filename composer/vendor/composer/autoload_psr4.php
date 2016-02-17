@@ -6,5 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    '\\Polyakusha\\TikEngine' => array($baseDir . '/src'),
+    'Polyakusha\\TikEngine\\' => array($baseDir . '/src'),
 );
