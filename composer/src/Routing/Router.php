@@ -47,7 +47,7 @@ class Router
         $replacePairs = [];
 
         foreach ($params as $name => $value) {
-            $replacePairs["{{name}}"] = url_encode($value);
+            $replacePairs["{{name}}"] = $value;
         }
 
         return strtr($route->getPattern(), $replacePairs);
@@ -68,5 +68,10 @@ class Router
             }
         }
         throw new RouteNotFoundException('Route not found');
+    }
+
+    public function setOptions(array $config)
+    {
+        var_dump($config);
     }
 }

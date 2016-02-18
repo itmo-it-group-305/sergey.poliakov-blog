@@ -1,0 +1,21 @@
+{
+  "services": {
+    "db": {
+      "class": "\\PDO",
+      "host": "localhost",
+      "port": null,
+      "username": "root",
+      "password": "root"
+    },
+    "router": {
+      "class": "\\Polyakusha\\TikEngine\\Routing\\Router",
+      "setupMethod": "setOptions",
+      "routes": {
+        "post_index": {
+          "pattern": "/",
+          "controller": "\\Polyakusha\\MegaBlog\\Controller\\PostController:index"
+        }
+      }
+    }
+  }
+}

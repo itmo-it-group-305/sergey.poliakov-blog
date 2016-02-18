@@ -49,6 +49,11 @@ class ParamsContainer implements \IteratorAggregate
 
     }
 
+    public function get($key, $default = null, $forceArray = false, $options = [])
+    {
+        return $this->filterVar($key, $default, FILTER_DEFAULT, $options, $forceArray);
+    }
+
     public function getBool($key, $default = false, $forceArray = false, $options = [])
     {
         return $this->filterVar($key, $default, FILTER_VALIDATE_BOOLEAN, $options, $forceArray);
