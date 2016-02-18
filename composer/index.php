@@ -40,26 +40,28 @@ use Polyakusha\TikEngine\Routing\Router;
 $pattern = '~{(?P<params>\w+)}~';
 $url = '/post/{cat}/{name}';
 preg_match_all($pattern, $url, $matches);
-var_dump($matches['params']);
+// matches - массив, куда попадают совпадения
+//var_dump($matches['params']);
+
 $routes = [
     'post_index' => [
         'pattern' => '/',
-        'controller' => '\Polyakusha\TikEngine\Controller\PostController:index',
+        'controller' => '\Polyakusha\MegaBlog\Controller\PostController:index',
     ],
     'post_show' => [
         'pattern' => '/post/{id}',
-        'controller' => '\Polyakusha\TikEngine\Controller\PostController:show',
+        'controller' => '\Polyakusha\MegaBlog\Controller\PostController:show',
         'params' => [
             'id' => '\d+',
         ],
     ],
     'post_new' => [
         'pattern' => '/post/new',
-        'controller' => '\Polyakusha\TikEngine\Controller\PostController:new',
+        'controller' => '\Polyakusha\MegaBlog\Controller\PostController:new',
     ],
     'post_edit' => [
         'pattern' => 'post/{id}/edit',
-        'controller' => '\Polyakusha\TikEngine\Controller\PostController:edit',
+        'controller' => '\Polyakusha\MegaBlog\Controller\PostController:edit',
         'params' => [
             'id' => '\d+',
         ],
