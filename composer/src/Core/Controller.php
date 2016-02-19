@@ -7,7 +7,7 @@ abstract class Controller
 {
     public static function create($controller)
     {
-        if (!$controller || strpos($controller, ':'))  {
+        if (!$controller || !strpos($controller, ':'))  {
             throw new \InvalidArgumentException(sprintf('Unable to find controller "%s" .', $controller));
         }
 

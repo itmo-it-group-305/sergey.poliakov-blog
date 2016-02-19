@@ -24,14 +24,14 @@ class Application
         $router = $this->serviceContainer->get('router');
 
         $router = $router->dispatch(
-            $request->server()->get('SERVER_URI')
+            $request->server()->get('REQUEST_URI')
         );
 
-        var_dump($route);
-        // dispatch url
-        // create controller
-        // execute action
-        // return response
+        $controller =  Controller::create($router->controller);
+
+        $response = call_user_func_array($controller, [$request]);
+
+        return $response;
     }
 
     protected function loadConfig($configPath)
