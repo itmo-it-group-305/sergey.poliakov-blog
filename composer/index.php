@@ -41,6 +41,7 @@ $routes = [
 ];
 
 $request = new Request();
+
 $router = new Router();
 $router->addRoutes($routes);
 
@@ -50,11 +51,11 @@ var_dump(
     )
 );
 
-//var_dump(
-//    $router->createUrl('post_show', [
-//        'id' => 1,
-//    ])
-//);
+var_dump(
+    $router->createUrl('post_show', [
+        'id' => 1,
+    ])
+);
 
 //$app = new Application(__DIR__ . '/config.json');
 //$app->handeRequest($request);
