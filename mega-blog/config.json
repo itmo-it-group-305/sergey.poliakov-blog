@@ -1,0 +1,39 @@
+{
+  "services": {
+    "db": {
+      "host": "localhost",
+      "port": null,
+      "username": "root",
+      "password": "root"
+    },
+    "router": {
+      "routes": {
+        "post_index": {
+          "pattern": "/blog/composer/",
+          "controller": "\\Polyakusha\\TikEngine\\Test\\Post:index"
+        },
+        "post_show": {
+          "pattern": "/blog/composer/post/{id}",
+          "controller": "\\Polyakusha\\TikEngine\\Test\\Post:show"
+        },
+        "post_new": {
+          "pattern": "/blog/composer/post/new",
+          "controller": "\\Polyakusha\\TikEngine\\Test\\Post:new"
+        },
+        "post_edit": {
+          "pattern": "/blog/composer/post/{id}/edit",
+          "controller": "\\Polyakusha\\TikEngine\\Test\\Post:edit"
+        },
+        "test": {
+          "pattern": "/blog/composer/test/{par1}/{par2}",
+          "controller": "\\Polyakusha\\TikEngine\\Test\\Post:index"
+        }
+      },
+      "templater": {
+        "enviroment_options": {
+          "debug": true
+        }
+      }
+    }
+  }
+}

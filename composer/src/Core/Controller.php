@@ -3,8 +3,12 @@
 namespace Polyakusha\TikEngine\Core;
 
 
+use Polyakusha\TikEngine\Http\Response;
+
 abstract class Controller
 {
+    protected $serviceContainer;
+
     public static function create($controller)
     {
         if (!$controller || !strpos($controller, ':'))  {
@@ -27,5 +31,23 @@ abstract class Controller
         }
 
         return $callable;
+    }
+
+    protected function get($serviceName)
+    {
+        return $this->serviceContainer->get($serviceName);
+    }
+
+    protected function render($template, array $data = [])
+    {
+        return new Response(
+            $this->get('templater')->render($template, $data)
+        );
+    }
+
+    public function setContainer($serviceContainer)
+    {
+        $this->serviceContainer = $serviceContainer;
+        return $this;
     }
 }

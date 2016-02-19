@@ -12,5 +12,7 @@
             "Polyakusha\\TikEngine\\": "./src"
         }
     },
-    "require": {}
+    "require": {
+        "twig/twig": "~1.0"
+    }
 }

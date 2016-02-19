@@ -76,7 +76,7 @@ class ParamsContainer implements \IteratorAggregate
 
     public function update(array $params)
     {
-        $this->params = array_merge($this->params, $params);
+        $this->params = array_merge_recursive($this->params, $params);
         return $this;
     }
 }
