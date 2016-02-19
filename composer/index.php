@@ -1,22 +1,69 @@
 <?php
 
-//use Polyakusha\TikEngine\Http\ParamsContainer;
+use Polyakusha\TikEngine\Http\ParamsContainer;
 use Polyakusha\TikEngine\Http\Request;
-//use Polyakusha\TikEngine\Routing\Router;
+use Polyakusha\TikEngine\Routing\Router;
 use Polyakusha\TikEngine\Core\Application;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-$request = new Request();
+$routes = [
+    'post_index' => [
+        'pattern' => '/blog/composer/',
+        'controller' => '\Polyakusha\MegaBlog\Controller\PostController:index',
+    ],
+    'post_show' => [
+        'pattern' => '/blog/composer/post/{id}',
+        'controller' => '\Polyakusha\MegaBlog\Controller\PostController:show',
+        'params' => [
+            'id' => '\d+',
+        ],
+    ],
+    'post_new' => [
+        'pattern' => '/blog/composer/post/new',
+        'controller' => '\Polyakusha\MegaBlog\Controller\PostController:new',
+    ],
+    'post_edit' => [
+        'pattern' => '/blog/composer/post/{id}/edit',
+        'controller' => '\Polyakusha\MegaBlog\Controller\PostController:edit',
+        'params' => [
+            'id' => '\d+',
+        ],
+    ],
+    'test_route' => [
+        'pattern' => '/blog/composer/test/{cat}/{id}/{some}',
+        'controller' => 'Controller',
+        'params' => [
+            'id' => '\d+',
+            'some' => 'AA[a-z]*?BB',
+        ],
+    ],
+];
 
-$app = new Application(__DIR__ . '/config.json');
-$app->handeRequest($request);
+$request = new Request();
+$router = new Router();
+$router->addRoutes($routes);
+
+var_dump(
+    $router->dispatch(
+        $request->server()->filter('REQUEST_URI')
+    )
+);
+
+//var_dump(
+//    $router->createUrl('post_show', [
+//        'id' => 1,
+//    ])
+//);
+
+//$app = new Application(__DIR__ . '/config.json');
+//$app->handeRequest($request);
 
 ////$request = new Request();
 ////
-////var_dump(
-////    $request->get()->getInt('id')
-////);
+//var_dump(
+//    $request->get()->getInt('id')
+//);
 //
 //
 ////$params = [
@@ -49,55 +96,14 @@ $app->handeRequest($request);
 //// matches - массив, куда попадают совпадения
 ////var_dump($matches['params']);
 //
-//$routes = [
-//    'post_index' => [
-//        'pattern' => '/',
-//        'controller' => '\Polyakusha\MegaBlog\Controller\PostController:index',
-//    ],
-//    'post_show' => [
-//        'pattern' => '/post/{id}',
-//        'controller' => '\Polyakusha\MegaBlog\Controller\PostController:show',
-//        'params' => [
-//            'id' => '\d+',
-//        ],
-//    ],
-//    'post_new' => [
-//        'pattern' => '/post/new',
-//        'controller' => '\Polyakusha\MegaBlog\Controller\PostController:new',
-//    ],
-//    'post_edit' => [
-//        'pattern' => 'post/{id}/edit',
-//        'controller' => '\Polyakusha\MegaBlog\Controller\PostController:edit',
-//        'params' => [
-//            'id' => '\d+',
-//        ],
-//    ],
-//    'test_route' => [
-//        'pattern' => 'test/{cat}/{id}/{some}',
-//        'controller' => 'Controller',
-//        'params' => [
-//            'id' => '\d+',
-//            'some' => 'AA[a-z]*?BB',
-//        ],
-//    ],
-//];
+
 //
 //$request = new Request();
 //$router = new Router();
 //
 //$router->addRoutes($routes);
 //
-////var_dump(
-////    $router->dispatch(
-////        $request->server()->filter('REQUEST_URI')
-////    )
-////);
-//
-//var_dump(
-//    $router->createUrl('post_show', [
-//        'id' => 1,
-//    ])
-//);
+
 //
 //
 ////$router->createUrl('post_show', ['id' => 1,]);

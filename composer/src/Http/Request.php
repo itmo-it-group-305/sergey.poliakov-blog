@@ -52,4 +52,9 @@ class Request
     {
         return $this->serverVars;
     }
+
+    public function getRequestUri()
+    {
+        return $this->server()->get('REQUEST_URI');
+    }
 }

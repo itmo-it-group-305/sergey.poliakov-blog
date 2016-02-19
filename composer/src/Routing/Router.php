@@ -2,7 +2,7 @@
 
 namespace Polyakusha\TikEngine\Routing;
 
-//use Polyakusha\TikEngine\Http\Request;
+use Polyakusha\TikEngine\Http\Request;
 
 use Polyakusha\TikEngine\Routing\InvalidRouteException;
 
@@ -60,10 +60,11 @@ class Router
 
         foreach ($this->routes as $name => $route) {
 
-            if (preg_match($route->compile(), $uri, $mathes)) {
+            if (preg_match($route->compile(), $uri, $matches)) {
                 return (object) [
                     'controller' => $route->getController(),
-                    'params' => array_filter($mathes, 'is_string', ARRAY_FILTER_USE_KEY),
+                    'params' => array_filter($matches, 'is_string', ARRAY_FILTER_USE_KEY),
+//
                 ];
             }
         }
@@ -72,6 +73,9 @@ class Router
 
     public function setOptions(array $config)
     {
-        var_dump($config);
+        if (isset($config['routes'])) {
+            $this->addRoutes($config['routes']);
+        }
+        return $this;
     }
 }

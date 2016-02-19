@@ -22,7 +22,12 @@ class Application
     {
         // Router
         $router = $this->serviceContainer->get('router');
-        var_dump($router);
+
+        $router = $router->dispatch(
+            $request->server()->get('SERVER_URI')
+        );
+
+        var_dump($route);
         // dispatch url
         // create controller
         // execute action

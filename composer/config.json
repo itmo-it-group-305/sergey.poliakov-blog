@@ -12,7 +12,11 @@
       "setupMethod": "setOptions",
       "routes": {
         "post_index": {
-          "pattern": "/",
+          "pattern": "/blog/composer/",
+          "controller": "\\Polyakusha\\MegaBlog\\Controller\\PostController:index"
+        },
+        "post_show": {
+          "pattern": "/blog/composer/post/{id}",
           "controller": "\\Polyakusha\\MegaBlog\\Controller\\PostController:index"
         }
       }
